@@ -1,0 +1,67 @@
+# PlantUML Editor
+
+@startuml
+
+class Champion{
+    - String version
+    - String id
+    - String key
+    - String name
+    - Image full_image
+    - Image sprite_image
+    - String lore
+    - String blurb
+    - int attack
+    - int defense
+    - int magic
+    - int difficulty
+}
+
+class Image{
+  - String filename  
+}
+
+class Skin{
+  - String id
+  - String num
+  - String name
+  - boolean chromas
+}
+
+class Tip{
+  - String text
+}
+
+class Match{
+ - Datetime start_time
+ - Datetime end_time
+ - String winner
+}
+
+class Summoner{
+  - String name
+}
+class SummonerMatch{
+  int kills
+  int deaths
+  int assists
+  int position
+  }
+class Team{}
+
+Champion "1"->"1" Image : full_image
+Champion "1"->"1" Image : sprite_image
+
+
+Champion "1"-->"0..*" Tip : ally_tips >
+Champion "1"-->"0..*" Tip : enemy_tips >
+
+Skin "0..*"<--"1" Champion
+
+Match "1" --> "5" SummonerMatch : blue_team >
+Match "1" --> "5" SummonerMatch : red_team >
+
+SummonerMatch "*" --> "1" Summoner
+SummonerMatch "*" --> "1" Champion
+
+@enduml
