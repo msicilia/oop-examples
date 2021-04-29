@@ -1,0 +1,46 @@
+
+@startuml
+
+
+class Platform{
+   name
+
+}
+
+class Game{
+  name
+}
+
+class User{
+    username
+
+}
+
+class LeaderBoard{
+}
+
+class Run{
+    time
+    betterThan(Score r)
+    getTime()
+}
+
+
+class RunWithScore{
+  score
+  getTime()
+}
+
+class RunWithEasterEggs{
+  eggs_collected
+  bonus_per_egg
+  getTime()
+}
+
+Game "1"--"*" Run 
+Run "*"->"1" LeaderBoard
+Platform "1"<-"*" Game : createdFor <
+User "1"-"*" Run : plays >
+Run <|-- RunWithScore
+Run <|-- RunWithEasterEggs
+@enduml 
