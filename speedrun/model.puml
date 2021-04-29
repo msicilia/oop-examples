@@ -1,5 +1,5 @@
 
-@startuml
+@startuml SpeedRun
 
 
 class Platform{
